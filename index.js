@@ -1,2 +1,5 @@
-// what would you like to do? (Add department)
-// What is the name of the department
+const inquirer = require("inquirer");
+require("console.table");
+const db = require("./db/connecttion");
+const utils = require("util");
+db.query = utils.promisify(db.query);
