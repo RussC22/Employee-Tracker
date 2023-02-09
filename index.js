@@ -73,6 +73,7 @@ async function viewEmployees() {
   console.table(employees);
   app();
 }
+// input function
 async function addDepartment() {
   const answer = await inquirer.prompt([
     {
