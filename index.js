@@ -88,3 +88,31 @@ async function addDepartment() {
   console.log("Department Added");
   app();
 }
+async function addRole() {
+  const answer = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the name of the role?",
+      name: "role",
+    },
+  ]);
+  const roles = await db.query("insert into role(name) values(?)", [
+    answer.roles,
+  ]);
+  console.log("Role Added");
+  app();
+}
+async function addEmployee() {
+  const answer = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the name of the employee?",
+      name: "employee",
+    },
+  ]);
+  const employee = await db.query("insert into employee(name) values(?)", [
+    answer.roles,
+  ]);
+  console.log("Employee Added");
+  app();
+}
