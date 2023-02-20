@@ -88,3 +88,82 @@ async function addDepartment() {
   console.log("Department Added");
   app();
 }
+async function addRole() {
+  const answers = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the name of the new role?",
+      name: "role",
+    },
+    {
+      type: "input",
+      message: "What is the salary of the role?",
+      name: "salary",
+    },
+    {
+      type: "input",
+      message: "What is the department id that the role is assopciated with?",
+      name: "department_id",
+    },
+  ]);
+  const department = await db.query(
+    "insert into role(title,salary,department_id) values(?,?,?)",
+    [answers.role, answers.title, answers.department_id]
+  );
+  console.log("Role & id");
+  app();
+}
+async function addEmployee() {
+  const answers = await inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the first name of the new employee?",
+      name: "first_name",
+    },
+    {
+      type: "input",
+      message: "What is the last name of the new employee?",
+      name: "last_name",
+    },
+    {
+      type: "input",
+      message: "What is the employees role?",
+      name: "role_id",
+    },
+    {
+      type: "input",
+      message: "Who is the employees manager?",
+      name: "manager_id",
+    },
+  ]);
+  const department = await db.query(
+    "insert into employee(first_name,last_name,role_id, manager_id) values(?,?,?,?)",
+    [answers.first_name, answers.last_name, answers.role_id, answers.manager_id]
+  );
+  console.log("employee info & id");
+  app();
+}
+async function updateEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Which employee would you like to change?",
+        name: "employee_id",
+      },
+      {
+        type: "input",
+        message: "Whats is the new role for the employee?",
+        name: "role",
+      },
+    ])
+    .then((data) => {
+      db.query(
+        `update employee set role_id = ? where id = ?`,
+        [data.role, data.employee_id],
+        (error, results) => {
+          console.log("update happened");
+        }
+      );
+    });
+}
