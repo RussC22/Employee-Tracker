@@ -102,13 +102,13 @@ async function addRole() {
     },
     {
       type: "input",
-      message: "What is the department id that the role is assopciated with?",
+      message: "What is the department id that the role is associated with?",
       name: "department_id",
     },
   ]);
   const department = await db.query(
     "insert into role(title,salary,department_id) values(?,?,?)",
-    [answers.role, answers.title, answers.department_id]
+    [answers.role, answers.salary, answers.department_id]
   );
   console.log("Role & id");
   app();
@@ -143,8 +143,8 @@ async function addEmployee() {
   console.log("employee info & id");
   app();
 }
-async function updateEmployee() {
-  inquirer
+async function updateEmployeeRole() {
+  const update = await inquirer
     .prompt([
       {
         type: "input",
@@ -166,4 +166,10 @@ async function updateEmployee() {
         }
       );
     });
+  const updateEmployee = await db.query(
+    "insert into employee(first_name,last_name,role_id, manager_id) values(?,?,?,?)",
+    [update.employee_id, update.last_name, update.role_id, update.manager_id]
+  );
+  console.log("update employee");
+  app();
 }
