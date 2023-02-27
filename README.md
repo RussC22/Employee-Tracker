@@ -6,7 +6,8 @@ Employee tracker is a content management system (CMS)!
 
 - (Video detailing app) https://drive.google.com/file/d/1oGZe8TEZbc2ERj2PDfWT6I1aQ9oFebiE/view
 
-<img width="1440" alt="EmployeeTracker SS" src="https://user-images.githubusercontent.com/114961971/221665511-04da03c5-ac22-4cb6-b85c-eadd51380323.png">
+<img width="1357" alt="EmployeeTracker SS" src="https://user-images.githubusercontent.com/114961971/221665990-5af8d16a-73f1-4e52-8377-132a1d3e3ad0.png">
+
 
 Employee Tracker is a user friendly command-line application that manages a company's employee database, using Node.js, Inquirer, and MySQL.
 
